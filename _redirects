@@ -1,0 +1,3 @@
+# Redirect alternate domains to primary domain
+https://taichi.spagnuolo.biz/* https://taiji.spagnuolo.biz/:splat 301!
+https://tai-chi.spagnuolo.biz/* https://taiji.spagnuolo.biz/:splat 301!
