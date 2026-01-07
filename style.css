@@ -24,6 +24,10 @@ body {
     opacity: 0;
     /* JS will fade in */
     visibility: hidden;
+    text-shadow:
+        0 1px 1px rgba(0, 0, 0, 0.75),
+        0 2px 4px rgba(0, 0, 0, 0.6),
+        2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 /* Nav */
@@ -75,6 +79,9 @@ nav {
     background: linear-gradient(to right, #fff, #aaa);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow:
+        0 1px 1px rgba(0, 0, 0, 0);
+
 }
 
 .hero p {
