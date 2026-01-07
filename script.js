@@ -13,10 +13,6 @@ requestAnimationFrame(raf);
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
-// Prevent FOUC
-document.body.style.visibility = 'visible';
-gsap.to("body", { opacity: 1, duration: 1 });
-
 // Progress Bar
 gsap.to(".progress-bar", {
     width: "100%",
