@@ -276,6 +276,29 @@ nav {
     }
 
     .bio .desc {
+        font-size: 1.1rem;
+    }
+}
+
+/* Landscape Mobile Fix */
+@media (max-height: 500px) and (orientation: landscape) {
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .master-name {
+        font-size: 1.5rem;
+    }
+
+    .bio .title {
         font-size: 1rem;
     }
+
+    .bio .desc {
+        font-size: .9rem;
+    }
+
+
+
 }
