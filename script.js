@@ -29,22 +29,41 @@ gsap.to(".progress-bar", {
 const sections = document.querySelectorAll(".master-section");
 
 sections.forEach((section, index) => {
-    
+
     const bgImage = section.querySelector(".bg-image");
     const content = section.querySelector(".content-wrap");
-    
-    // Pinning effect: Keep the section in place while we animate its contents
-    // Actually, for this stack effect, let's try a strict pinning approach
-    // where each section pins until the user scrolls 'through' it.
-    
-    // For this specific requested effect ("come into screen... text fading/zooming"):
-    // We will let the user scroll normally, but use Parallax on the BG.
-    
-    // Parallax Background
-    gsap.fromTo(bgImage, 
-        { yPercent: -20 },
+
+    // Create a timeline for the pinned content
+    // This makes the section 'stick' while we scroll through its text
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "+=100%", // Pin for one full viewport height of scrolling
+            scrub: true,
+            pin: true,
+            anticipatePin: 1
+        }
+    });
+
+    // Content entry/exit sequence
+    tl.fromTo(content,
+        { y: 60, opacity: 0, scale: 0.95 },
+        { y: 0, opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" }
+    )
+        .to(content, { opacity: 1, duration: 0.2 }) // Hold position
+        .to(content, { y: -60, opacity: 0, scale: 1.05, duration: 0.4, ease: "power2.in" });
+
+    // Background Image Animation (Parallax + Color/Scale)
+    // This happens over the entire scroll duration of the section
+    gsap.fromTo(bgImage,
         {
-            yPercent: 20,
+            filter: "grayscale(100%) contrast(120%) brightness(0.5)",
+            scale: 1.2
+        },
+        {
+            filter: "grayscale(0%) contrast(100%) brightness(0.7)",
+            scale: 1,
             ease: "none",
             scrollTrigger: {
                 trigger: section,
@@ -54,45 +73,10 @@ sections.forEach((section, index) => {
             }
         }
     );
-    
-    // Animate Content In
-    gsap.fromTo(content,
-        { 
-            y: 100, 
-            opacity: 0, 
-            scale: 0.9 
-        },
-        {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            duration: 1,
-            ease: "power3.out",
-            scrollTrigger: {
-                trigger: section,
-                start: "top 60%", // When top of section hits 60% viewport height
-                end: "top 20%",
-                toggleActions: "play none none reverse"
-            }
-        }
-    );
-    
-    // Image colorize on focus (Grayscale -> Color)
-    gsap.to(bgImage, {
-        filter: "grayscale(0%) contrast(100%) brightness(0.8)",
-        duration: 1,
-        scrollTrigger: {
-            trigger: section,
-            start: "top center",
-            end: "bottom center",
-            toggleActions: "play reverse play reverse"
-        }
-    });
-
 });
 
 // Lineage Connector Animation
-gsap.fromTo(".lineage-connector", 
+gsap.fromTo(".lineage-connector",
     { height: 0 },
     {
         height: "100%",
