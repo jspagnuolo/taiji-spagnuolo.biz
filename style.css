@@ -107,6 +107,7 @@ nav {
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  margin-bottom: 100px;
 }
 
 .arrow {
