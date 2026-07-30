@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yang Style Tai Chi Lineage | Yang Chengfu to Joe Spagnuolo</title>
+    <title>Learn Tai Chi, Odessa, Florida from Certified Yang Style Tai Chi Instructor Joe Spagnuolo</title>
     <meta
       name="description"
-      content="Interactive visual guide of the 7 generations of Yang Style Tai Chi Lineage."
+      content="Interactive visual guide of the 7 generations of Yang Style Tai Chi Lineage. Learn Tai Chi in Odessa, Florida from Certified Instructor Joe Spagnuolo, a disciple of Master Nick Scrima and Grandmaster Chen."
     />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <!-- Fonts -->
@@ -256,6 +256,60 @@
         color: #ddd;
       }
 
+      /* Tall portrait source: bias the cover-crop toward the upper body
+         so the face and trophy stay in frame on wide viewports. */
+      .bg-image.bg-portrait {
+        background-position: center 18%;
+      }
+
+      /* Bio beside the certificate: stacking them would overflow the pinned
+         section on shorter laptops, and .master-section clips overflow. */
+      .bio-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.75rem;
+      }
+
+      .bio-row .bio {
+        flex: 1 1 auto;
+      }
+
+      /* Framed credential (certificate) inside a master section */
+      .credential {
+        flex: 0 0 auto;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6rem;
+        text-decoration: none;
+        color: var(--text-secondary);
+      }
+
+      /* Sized by height, not width: the section is pinned to the viewport and
+         clips overflow, so the certificate has to scale with available height. */
+      .credential img {
+        display: block;
+        width: auto;
+        height: 24vh;
+        max-height: 260px;
+        border: 1px solid var(--gold);
+        border-radius: 2px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+        transition: transform 0.3s ease;
+      }
+
+      .credential:hover img {
+        transform: translateY(-3px);
+      }
+
+      .credential .caption {
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        opacity: 0.85;
+      }
+
       /* Lineage Connector Line */
       .lineage-connector {
         position: fixed;
@@ -324,6 +378,28 @@
         .bio .desc {
           font-size: 1.1rem;
         }
+
+        .bio-row {
+          display: block;
+        }
+
+        /* Not enough vertical room for a legible thumbnail: link out instead */
+        .credential img {
+          display: none;
+        }
+
+        .credential {
+          margin-top: 1rem;
+        }
+
+        .credential .caption {
+          font-size: 0.8rem;
+          text-decoration: underline;
+        }
+
+        .credential .caption::after {
+          content: " ↗";
+        }
       }
 
       /* Landscape Mobile Fix */
@@ -342,6 +418,11 @@
 
         .bio .desc {
           font-size: 0.9rem;
+        }
+
+        /* This viewport already can't fit the existing bio; don't add to it. */
+        .credential {
+          display: none;
         }
       }
       /* Sticky Banner */
@@ -580,8 +661,8 @@
       <section class="master-section" id="gen8">
         <div class="bg-wrap">
           <div
-            class="bg-image"
-            style="background-image: url(&quot;images/spagnuolo2.webp&quot;)"
+            class="bg-image bg-portrait"
+            style="background-image: url(&quot;images/CMAC-12.webp&quot;)"
           ></div>
           <div class="overlay"></div>
         </div>
@@ -589,20 +670,35 @@
           <div class="gen-badge">7th Generation</div>
           <h2 class="master-name">Joe Spagnuolo</h2>
           <div class="dates">Active</div>
-          <div class="bio">
-            <p class="title">Lineage Holder</p>
-            <p class="desc">
-              Student of Master Nick Scrima for 20+ years. Attended workshops
-              with Grandmaster Chen. Medalist in the International Chinese
-              Martial Arts Championship.
-            </p>
+          <div class="bio-row">
+            <div class="bio">
+              <p class="title">Lineage Holder & Certified Instructor</p>
+              <p class="desc">
+                Student of Master Nick Scrima for 20+ years. Attended workshops
+                with Grandmaster Chen. Gold Medalist & Tai Chi Grand Champion.
+              </p>
+            </div>
+            <a
+              class="credential"
+              href="images/IMG_2984c.webp"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                src="images/IMG_2984c.webp"
+                width="2000"
+                height="1500"
+                loading="lazy"
+                alt="Yang Style Taiji Quan Instructor Certificate awarded to Joe Spagnuolo by Master Nick Scrima, Chinese Martial Arts Center, July 18, 2026"
+              />
+              <span class="caption">Instructor Certificate — July 18, 2026</span>
+            </a>
           </div>
         </div>
       </section>
 
       <div class="sticky-banner">
-        Sign up for Tai Chi classes <br />Sunday at
-        3:00pm.
+        Sign up for Tai Chi classes <br />Starting this fall.
         <br />
         Contact Jennifer Leavy, Pose By Pose Yoga:<br />
         <a href="tel:813-501-4987">813-501-4987</a> or
